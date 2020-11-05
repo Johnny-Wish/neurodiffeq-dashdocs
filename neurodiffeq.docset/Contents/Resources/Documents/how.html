@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How Does It Work? &mdash; neurodiffeq  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="API Reference" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> neurodiffeq
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstart.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced Uses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How Does It Work?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Satisfying-the-Equation">Satisfying the Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Satisfying-the-Initial/Boundary-Conditions">Satisfying the Initial/Boundary Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#The-implementation">The implementation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">neurodiffeq</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>How Does It Work?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/how.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="How-Does-It-Work?">
+<h1>How Does It Work?<a class="headerlink" href="#How-Does-It-Work?" title="Permalink to this headline">¶</a></h1>
+<p>To solve a differential equation. We need the solution to satisfy 2 things: 1. They need to satisfy the equation 2. They need to satisfy the initial/boundary conditions</p>
+<div class="section" id="Satisfying-the-Equation">
+<h2>Satisfying the Equation<a class="headerlink" href="#Satisfying-the-Equation" title="Permalink to this headline">¶</a></h2>
+<p>The key idea of solving differential equations with ANNs is to reformulate the problem as an optimization problem in which we minimize the residual of the differential equations. In a very general sense, a differential equation can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}u - f = 0\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is the differential operator, <span class="math notranslate nohighlight">\(u\left(x,t\right)\)</span> is the solution that we wish to find, and <span class="math notranslate nohighlight">\(f\)</span> is a known forcing function. Note that <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> contains any combination of temporal and spatial partial derivatives. Moreover, <span class="math notranslate nohighlight">\(x\)</span> is in general a vector in three spatial dimensions and <span class="math notranslate nohighlight">\(u\)</span> is a vector of solutions. We denote the output of the neural network as <span class="math notranslate nohighlight">\(u_{N}\left(x, t; p\right)\)</span> where the parameter vector <span class="math notranslate nohighlight">\(p\)</span> is a
+vector containing the weights and biases of the neural network. We will drop the arguments of the neural network solution in order to be concise. If <span class="math notranslate nohighlight">\(u_{N}\)</span> is a solution to the differential equation, then the residual</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{R}\left(u_{N}\right) = \mathcal{L}u_{N} - f\]</div>
+<p>will be identically zero. One way to incorporate this into the training process of a neural network is to use the residual as the loss function. In general, the <span class="math notranslate nohighlight">\(L^{2}\)</span> loss of the residual is used. This is the convention that <code class="docutils literal notranslate"><span class="pre">NeuroDiffEq</span></code> follows, although we note that other loss functions could be conceived. Solving the differential equation is re-cast as the following optimization problem:</p>
+<div class="math notranslate nohighlight">
+\[\min_{p}\left(\mathcal{L}u_{N} - f\right)^2.\]</div>
+</div>
+<div class="section" id="Satisfying-the-Initial/Boundary-Conditions">
+<h2>Satisfying the Initial/Boundary Conditions<a class="headerlink" href="#Satisfying-the-Initial/Boundary-Conditions" title="Permalink to this headline">¶</a></h2>
+<p>It is necessary to inform the neural network about any boundary and initial conditions since it has no way of enforcing these <em>a priori</em>. There are two primary ways to satisfy the boundary and initial conditions. First, one can impose the initial/boundary conditions in the loss function. For example, given an initial condition <span class="math notranslate nohighlight">\(u\left(x,t_{0}\right) = u_{0}\left(x\right)\)</span>, the loss function can be modified to:</p>
+<div class="math notranslate nohighlight">
+\[\min_{p}\left[\left(\mathcal{L}u_{N} - f\right)^2 + \lambda\left(u_{N}\left(x,t_{0}\right) - u_0\left(x\right)\right)^2\right]\]</div>
+<p>where the second term penalizes solutions that don’t satisfy the initial condition. Larger values of the regularization parameter <span class="math notranslate nohighlight">\(\lambda\)</span> result in stricter satisfaction of the initial condition while sacrificing solution accuracy. However, this approach does not lead to <em>exact</em> satisfaction of the initial and boundary conditions.</p>
+<p>Another option is to transform the <span class="math notranslate nohighlight">\(u_{N}\)</span> in a way such that the initial/boundary conditions are satisfied by construction. Given an initial condition <span class="math notranslate nohighlight">\(u_{0}\left(x\right)\)</span> the neural network can be transformed according to:</p>
+<div class="math notranslate nohighlight">
+\[\widetilde{u}\left(x,t\right) = u_{0}\left(x\right) + \left(1-e^{-\left(t-t_{0}\right)}\right)u_{N}\left(x,t\right)\]</div>
+<p>so that when <span class="math notranslate nohighlight">\(t = t_0\)</span>, <span class="math notranslate nohighlight">\(\widetilde{u}\)</span> will always be <span class="math notranslate nohighlight">\(u_0\)</span>. Accordingly, the objective function becomes</p>
+<div class="math notranslate nohighlight">
+\[\min_{p}\left(\mathcal{L}\widetilde{u} - f\right)^2.\]</div>
+<p>This approach is similar to the trial function approach, but with a different form of the trial function. Modifying the neural network to account for boundary conditions can also be done. In general, the transformed solution will have the form:</p>
+<div class="math notranslate nohighlight">
+\[\widetilde{u}\left(x,t\right) = A\left(x, t; x_{\text{boundary}}, t_{0}\right)u_{N}\left(x,t\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\left(x, t; x_{\text{boundary}}, t_{0}\right)\)</span> must be designed so that <span class="math notranslate nohighlight">\(\widetilde{u}\left(x,t\right)\)</span> has the correct boundary conditions. This can be very challenging for complicated domains.</p>
+<p>Both of these two methods have their advantages. The first way is simpler to implement and can be more easily extended to high-dimensional PDEs and PDEs formulated on complicated domains. The second way assures that the initial/boundary conditions are exactly satisfied. Considering that differential equations can be sensitive to initial/boundary conditions, this is expected to play an important role. Another advantage of the second method is that fixing these conditions can reduce the effort
+required during the training of the ANN. <code class="docutils literal notranslate"><span class="pre">NeuroDiffEq</span></code> employs the second approach.</p>
+</div>
+<div class="section" id="The-implementation">
+<h2>The implementation<a class="headerlink" href="#The-implementation" title="Permalink to this headline">¶</a></h2>
+<p>We minimize the loss function with optimization algorithms implemented in <code class="docutils literal notranslate"><span class="pre">torch.optim.optimizer</span></code>. These algorithms use the derivatives of the loss function w.r.t. the network weights to update the network weights. The derivatives are computed with <code class="docutils literal notranslate"><span class="pre">torch.autograd</span></code>, which implements reverse mode automatic differentiation. Automatic differentiation calculates the derivatives base on the computational graph from the network weights to the loss, so discretization is not required. Here, our loss
+function is a bit different from the ones usually found in deep learning in the sense that, it not only involves the network output but also the derivatives of the network output w.r.t. the input. This second kind of derivatives is computed with <code class="docutils literal notranslate"><span class="pre">torch.autograd</span></code> as well.</p>
+<p>Most of the logic of the above-mentioned method is implemented in <code class="docutils literal notranslate"><span class="pre">ode.solve</span></code> and <code class="docutils literal notranslate"><span class="pre">pde.solve2D</span></code> functions. The following diagram shows the process flow of solving a PDE <span class="math notranslate nohighlight">\(\mathcal{L}u - f = 0\)</span> for <span class="math notranslate nohighlight">\(u(x, y)\)</span>. The PDE is passed as a function that takes in <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(u\)</span> and produces the value of <span class="math notranslate nohighlight">\(\mathcal{L}u - f\)</span>. To specify the differential operator <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>, the user can make use of the function <code class="docutils literal notranslate"><span class="pre">neurodiffeq.diff</span></code> which is just a wrapper of
+<code class="docutils literal notranslate"><span class="pre">torch.autograd.grad</span></code>. During each training epoch, a set of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is generated as <code class="docutils literal notranslate"><span class="pre">torch.tensor</span></code>. They are split into multiple batches. Each batch is used to make a little tweak to the network weights. In each iteration, a batch of <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> are fed into the neural network, the output then transformed to impose the boundary conditions. This gives us the approximate solution <span class="math notranslate nohighlight">\(\tilde{u}\)</span>. <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(\tilde{u}\)</span> are then passed to the PDE
+function specified by user to calculate <span class="math notranslate nohighlight">\(\mathcal{L}\tilde{u} - f\)</span> and the final loss function (the default is just <span class="math notranslate nohighlight">\((\mathcal{L}\tilde{u} - f)^2\)</span>). The optimizer then adjusts the network weights to better satisfy the PDE by taking a step to minimize the loss function. We repeat these steps until we reach the maximum number of epochs specified by the user.</p>
+<p><img alt="flow" src="_images/flow.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="api.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, odegym
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

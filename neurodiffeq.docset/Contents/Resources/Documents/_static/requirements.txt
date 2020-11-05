@@ -1,0 +1,7 @@
+sphinx
+mock
+ipython
+nbsphinx
+sphinx_rtd_theme
+recommonmark
+pandoc
